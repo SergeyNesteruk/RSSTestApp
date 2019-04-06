@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (4.6.0)
+  - AlamofireRSSParser (2.1.0):
+    - Alamofire
+
+DEPENDENCIES:
+  - AlamofireRSSParser
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireRSSParser
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AlamofireRSSParser: 5fed94de51ff88ea48496d7dfa6e3274100d90d6
+
+PODFILE CHECKSUM: e7d6860cb80f669f4a0b501f0f24d1ed2c807f0c
+
+COCOAPODS: 1.5.3
