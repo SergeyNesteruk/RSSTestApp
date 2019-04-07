@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--RSS Feeds-->
+        <!--Feeds View Controller-->
         <scene sceneID="T9Y-TF-Wl1">
             <objects>
                 <viewController id="1MA-gm-dNe" customClass="RSSFeedsViewController" customModule="RSSFeedTestApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,7 +67,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HWm-vs-IP8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="RSS Feeds" id="YA3-Vn-d8i"/>
                     <navigationItem key="navigationItem" id="1Gk-wg-8lw">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Feeds" id="iL0-9n-2PH"/>
@@ -160,7 +159,7 @@
         <scene sceneID="Uia-wy-7j0">
             <objects>
                 <navigationController id="3yT-oz-UUr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="RSS Feeds" id="444-X0-vQa"/>
+                    <tabBarItem key="tabBarItem" title="RSS Feeds" image="tab2" id="444-X0-vQa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vyw-u9-Eby">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -242,7 +241,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dnp-I5-Ybn"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="General" id="ZBn-A7-UIj"/>
+                    <tabBarItem key="tabBarItem" title="General" image="tab1" id="ZBn-A7-UIj"/>
                     <connections>
                         <outlet property="dateTimeLabel" destination="HJb-U9-JyO" id="2Js-TB-XEC"/>
                         <outlet property="selectedFeedTitleLabel" destination="qTo-iC-gTs" id="pLf-bj-skI"/>
@@ -271,4 +270,8 @@
             <point key="canvasLocation" x="-1225" y="-326"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab1" width="50" height="50"/>
+        <image name="tab2" width="50" height="50"/>
+    </resources>
 </document>
