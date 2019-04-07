@@ -15,6 +15,7 @@ class GeneralViewController: UIViewController {
     private let dateFormatter: DateFormatter
     private let timeFormatter: DateFormatter
     private var updateTimer: DispatchSourceTimer?
+    private static let updateIntervalSeconds = 1;
     
     required init?(coder aDecoder: NSCoder) {
         dateFormatter = DateFormatter()
@@ -49,7 +50,7 @@ class GeneralViewController: UIViewController {
     private func switchOnTimeUpdate() {
         if updateTimer == nil {
             updateTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
-            updateTimer?.schedule(wallDeadline: .now(), repeating: .seconds(1))
+            updateTimer?.schedule(wallDeadline: .now(), repeating: .seconds(GeneralViewController.updateIntervalSeconds))
             updateTimer?.setEventHandler(handler: {
                 self.updateCurrentTimeLabel()
             })
