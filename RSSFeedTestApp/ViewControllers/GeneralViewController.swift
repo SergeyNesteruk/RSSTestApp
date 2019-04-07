@@ -26,6 +26,22 @@ class GeneralViewController: UIViewController {
         timeFormatter.timeStyle = .medium
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(forName: FeedNotifications.feedSelected.name, object: nil, queue: nil) { (notification) in
+            guard let feedTitle = notification.object as? String else { return }
+            DispatchQueue.main.async {
+                self.selectedFeedTitleLabel.text = feedTitle
+                self.selectedFeedTitleLabel.textColor = UIColor.darkGray
+            }
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

@@ -130,6 +130,7 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         if let item = item {
             performSegue(withIdentifier: showDetailsSegue, sender: item)
+            NotificationCenter.default.post(name: FeedNotifications.feedSelected.name, object: item.title)
         }
     }
     
