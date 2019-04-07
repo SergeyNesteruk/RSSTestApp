@@ -19,8 +19,13 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
     private var environmentDataController: RSSFeedDataController!
     private var entertainmentDataController: RSSFeedDataController!
     private var combinedDataController: CombinedDataController!
+    private let showDetailsSegue = "OpenRSSItemDetails"
+    private var selectedSegment: SegmentSelection {
+        get {
+            return SegmentSelection(rawValue: segmentedControl.selectedSegmentIndex)!
+        }
+    }
     
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var itemsTableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -42,9 +47,15 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
         reconfigureDataFetching()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "OpenRSSItemDetails", let feedItem = sender as? RSSItem, let vc = segue.destination as? RSSItemDetailsViewController {
+            vc.rssItem = feedItem
+        }
+    }
+    
     // MARK: UITableViewDataSource and UITableViewDeleagate methods
     func numberOfSections(in tableView: UITableView) -> Int {
-        switch SegmentSelection(rawValue: segmentedControl.selectedSegmentIndex)! {
+        switch selectedSegment {
         case .businessNews:
             return 1
             
@@ -54,12 +65,12 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch SegmentSelection(rawValue: segmentedControl.selectedSegmentIndex)! {
+        switch selectedSegment {
         case .businessNews:
             return businessNewsDataController.itemsNumber
             
         default:
-            switch EEFeeds(rawValue: section)! {
+            switch feedSection(section: section) {
             case .entertainment:
                 return combinedDataController.entertainmentRSSItems.count
                 
@@ -72,7 +83,7 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedItemTableViewCell.reuseKey, for: indexPath)
         if let feedCell = cell as? FeedItemTableViewCell {
-            switch SegmentSelection(rawValue: segmentedControl.selectedSegmentIndex)! {
+            switch selectedSegment {
             case .businessNews:
                 if let feedItem = businessNewsDataController.item(index: indexPath.row) {
                     feedCell.configure(title: feedItem.title, section: EEFeeds(rawValue: indexPath.section)!)
@@ -94,11 +105,31 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch SegmentSelection(rawValue: segmentedControl.selectedSegmentIndex)! {
+        switch selectedSegment {
         case .businessNews:
             return nil
         default:
             return titleForEESection(section: section)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        var item: RSSItem?
+        switch selectedSegment {
+        case .businessNews:
+            item = businessNewsDataController.item(index: indexPath.row)
+        default:
+            switch feedSection(section: indexPath.section) {
+            case .entertainment:
+                item = combinedDataController.entertainmentRSSItems[indexPath.row]
+                
+            case .environment:
+                item = combinedDataController.environmentRSSItems[indexPath.row]
+            }
+        }
+        if let item = item {
+            performSegue(withIdentifier: showDetailsSegue, sender: item)
         }
     }
     
@@ -144,7 +175,7 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: Private methods    
     private func reconfigureDataFetching() {
-        switch SegmentSelection(rawValue: segmentedControl.selectedSegmentIndex)! {
+        switch selectedSegment {
         case .businessNews:
             businessNewsDataController.resumePeriodicFeedUpdate()
             environmentDataController.suspendPeriodicFeedUpdate()
@@ -173,12 +204,16 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     private func titleForEESection(section: Int) -> String {
-        switch EEFeeds(rawValue: section)! {
+        switch feedSection(section: section) {
         case .entertainment:
             return "Entertainment"
             
         case .environment:
             return "Environment"
         }
+    }
+    
+    private func feedSection(section: Int) -> EEFeeds {
+        return EEFeeds(rawValue: section)!
     }
 }
