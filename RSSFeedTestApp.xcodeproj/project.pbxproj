@@ -11,11 +11,11 @@
 		A552F7362258D96E006EB56F /* RSSFeedDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F7352258D96E006EB56F /* RSSFeedDataController.swift */; };
 		A552F7382258FDE9006EB56F /* DataControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F7372258FDE9006EB56F /* DataControllersFactory.swift */; };
 		A552F73A2259084C006EB56F /* FeedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F7392259084C006EB56F /* FeedItemTableViewCell.swift */; };
-		A552F73D22592DCC006EB56F /* SystemActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F73C22592DCC006EB56F /* SystemActivityIndicator.swift */; };
 		A552F73F225A1F19006EB56F /* CombinedDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F73E225A1F19006EB56F /* CombinedDataController.swift */; };
 		A552F742225A7025006EB56F /* UITableView+SupportMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F741225A7025006EB56F /* UITableView+SupportMethods.swift */; };
 		A552F744225A7DF2006EB56F /* RSSItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F743225A7DF2006EB56F /* RSSItemDetailsViewController.swift */; };
 		A552F746225A965C006EB56F /* FeedNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F745225A965C006EB56F /* FeedNotifications.swift */; };
+		A552F748225A9A5E006EB56F /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F747225A9A5E006EB56F /* SpinnerView.swift */; };
 		A591AF8C22555C02005BA5C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A591AF8B22555C02005BA5C9 /* AppDelegate.swift */; };
 		A591AF8E22555C02005BA5C9 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A591AF8D22555C02005BA5C9 /* GeneralViewController.swift */; };
 		A591AF9122555C02005BA5C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A591AF8F22555C02005BA5C9 /* Main.storyboard */; };
@@ -31,11 +31,11 @@
 		A552F7352258D96E006EB56F /* RSSFeedDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedDataController.swift; sourceTree = "<group>"; };
 		A552F7372258FDE9006EB56F /* DataControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataControllersFactory.swift; sourceTree = "<group>"; };
 		A552F7392259084C006EB56F /* FeedItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemTableViewCell.swift; sourceTree = "<group>"; };
-		A552F73C22592DCC006EB56F /* SystemActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemActivityIndicator.swift; sourceTree = "<group>"; };
 		A552F73E225A1F19006EB56F /* CombinedDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedDataController.swift; sourceTree = "<group>"; };
 		A552F741225A7025006EB56F /* UITableView+SupportMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+SupportMethods.swift"; sourceTree = "<group>"; };
 		A552F743225A7DF2006EB56F /* RSSItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSItemDetailsViewController.swift; sourceTree = "<group>"; };
 		A552F745225A965C006EB56F /* FeedNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedNotifications.swift; sourceTree = "<group>"; };
+		A552F747225A9A5E006EB56F /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		A591AF8822555C02005BA5C9 /* RSSFeedTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSFeedTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A591AF8B22555C02005BA5C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A591AF8D22555C02005BA5C9 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				A552F7392259084C006EB56F /* FeedItemTableViewCell.swift */,
+				A552F747225A9A5E006EB56F /* SpinnerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,7 +129,6 @@
 			children = (
 				A591AF8B22555C02005BA5C9 /* AppDelegate.swift */,
 				A591AF9722555C06005BA5C9 /* Info.plist */,
-				A552F73C22592DCC006EB56F /* SystemActivityIndicator.swift */,
 				A552F745225A965C006EB56F /* FeedNotifications.swift */,
 			);
 			path = Application;
@@ -283,10 +283,10 @@
 				A552F73A2259084C006EB56F /* FeedItemTableViewCell.swift in Sources */,
 				A552F7382258FDE9006EB56F /* DataControllersFactory.swift in Sources */,
 				A591AF8C22555C02005BA5C9 /* AppDelegate.swift in Sources */,
-				A552F73D22592DCC006EB56F /* SystemActivityIndicator.swift in Sources */,
 				A552F73F225A1F19006EB56F /* CombinedDataController.swift in Sources */,
 				A591AFA122555EF2005BA5C9 /* RSSFeedsViewController.swift in Sources */,
 				A552F746225A965C006EB56F /* FeedNotifications.swift in Sources */,
+				A552F748225A9A5E006EB56F /* SpinnerView.swift in Sources */,
 				A552F742225A7025006EB56F /* UITableView+SupportMethods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

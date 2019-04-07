@@ -16,6 +16,7 @@ protocol RSSFeedDataControllerDelegate {
 
 class RSSFeedDataController {
     var loading = false
+    var spinnerPresenter: SpinnerViewPresenter?
     var delegate: RSSFeedDataControllerDelegate?
     var itemsNumber: Int {
         get {
@@ -44,13 +45,13 @@ class RSSFeedDataController {
     private func getFeed() {
         guard !loading else { return }
         loading = true
-        SystemActivityIndicator.showNetworkActivity()
+        spinnerPresenter?.showNetworkActivity()
         Alamofire.request(feedURL).responseRSS() { (response) -> Void in
             if let feed: RSSFeed = response.result.value {
                 self.lastFeed = feed
             }
             self.loading = false
-            SystemActivityIndicator.hideNetworkActivity()
+            self.spinnerPresenter?.hideNetworkActivity()
         }
     }
     

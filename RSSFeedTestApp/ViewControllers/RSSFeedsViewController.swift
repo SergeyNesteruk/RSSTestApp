@@ -33,6 +33,7 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         
         setupDataControllers()
+        createSpinnerIndicator()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -216,5 +217,14 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private func feedSection(section: Int) -> EEFeeds {
         return EEFeeds(rawValue: section)!
+    }
+    
+    private func createSpinnerIndicator() {
+        let spinner = SpinnerView(style: .gray)
+        spinner.color = UIColor.darkGray
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
+        businessNewsDataController.spinnerPresenter = spinner
+        entertainmentDataController.spinnerPresenter = spinner
+        environmentDataController.spinnerPresenter = spinner
     }
 }
