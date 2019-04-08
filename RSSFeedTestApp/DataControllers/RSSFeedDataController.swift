@@ -48,11 +48,47 @@ class RSSFeedDataController {
         spinnerPresenter?.showNetworkActivity()
         Alamofire.request(feedURL).responseRSS() { (response) -> Void in
             if let feed: RSSFeed = response.result.value {
-                self.lastFeed = feed
+                self.mergeFreshFeed(feed: feed)
             }
             self.loading = false
             self.spinnerPresenter?.hideNetworkActivity()
         }
+    }
+    
+    private func mergeFreshFeed(feed: RSSFeed) {
+        guard let lastFeed = lastFeed else {
+            self.lastFeed = feed
+            print("Initial feed assignment")
+            return // In case there was no last feed before we do an update with a new feed
+        }
+        
+        if lastFeed.items.count != feed.items.count {
+            // A simple merge mechanism updates feed if the number of items is different
+            self.lastFeed = feed
+            print("Feed is updated by number of elements")
+            return
+        }
+        
+        let lastFeedIDs = lastFeed.items.map { (rssItem) -> String in
+            if let link = rssItem.link, let idString = URL(string: link)?.lastPathComponent {
+                return idString
+            }
+            return rssItem.title ?? rssItem.description
+        }
+        let newFeedIDs = feed.items.map { (rssItem) -> String in
+            if let link = rssItem.link, let idString = URL(string: link)?.lastPathComponent {
+                return idString
+            }
+            return rssItem.title ?? rssItem.description
+        }
+        let difference = newFeedIDs.filter { !lastFeedIDs.contains($0) }
+        
+        // Only assign new feed if the difference is non-zero
+        if difference.count > 0 {
+            self.lastFeed = feed
+            print("Feed is updated")
+        }
+        print("Feeds are identical")
     }
     
     func item(index: Int) -> RSSItem? {
