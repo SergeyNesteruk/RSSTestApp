@@ -55,6 +55,7 @@ class RSSFeedDataController {
         }
     }
     
+    /// Does a bit of advanced analysis regarding update of the currently stored feed
     private func mergeFreshFeed(feed: RSSFeed) {
         guard let lastFeed = lastFeed else {
             self.lastFeed = feed
