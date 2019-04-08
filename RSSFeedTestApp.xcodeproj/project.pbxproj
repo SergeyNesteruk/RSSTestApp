@@ -16,6 +16,7 @@
 		A552F744225A7DF2006EB56F /* RSSItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F743225A7DF2006EB56F /* RSSItemDetailsViewController.swift */; };
 		A552F746225A965C006EB56F /* FeedNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F745225A965C006EB56F /* FeedNotifications.swift */; };
 		A552F748225A9A5E006EB56F /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552F747225A9A5E006EB56F /* SpinnerView.swift */; };
+		A552F74A225B4CCB006EB56F /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = A552F749225B4CCB006EB56F /* Readme.md */; };
 		A591AF8C22555C02005BA5C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A591AF8B22555C02005BA5C9 /* AppDelegate.swift */; };
 		A591AF8E22555C02005BA5C9 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A591AF8D22555C02005BA5C9 /* GeneralViewController.swift */; };
 		A591AF9122555C02005BA5C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A591AF8F22555C02005BA5C9 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		A552F743225A7DF2006EB56F /* RSSItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSItemDetailsViewController.swift; sourceTree = "<group>"; };
 		A552F745225A965C006EB56F /* FeedNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedNotifications.swift; sourceTree = "<group>"; };
 		A552F747225A9A5E006EB56F /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		A552F749225B4CCB006EB56F /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		A591AF8822555C02005BA5C9 /* RSSFeedTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSFeedTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A591AF8B22555C02005BA5C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A591AF8D22555C02005BA5C9 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				A591AF9F22555CD0005BA5C9 /* ViewControllers */,
 				A591AF9E22555CA8005BA5C9 /* Resources */,
 				A591AF9D22555C63005BA5C9 /* Application */,
+				A552F749225B4CCB006EB56F /* Readme.md */,
 			);
 			path = RSSFeedTestApp;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			files = (
 				A591AF9622555C06005BA5C9 /* LaunchScreen.storyboard in Resources */,
 				A591AF9322555C06005BA5C9 /* Assets.xcassets in Resources */,
+				A552F74A225B4CCB006EB56F /* Readme.md in Resources */,
 				A591AF9122555C02005BA5C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
