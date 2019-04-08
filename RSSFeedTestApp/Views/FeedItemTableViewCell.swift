@@ -13,14 +13,19 @@ class FeedItemTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    func configure(title: String?, section: EEFeeds) {
+    func configure(title: String?, section: EEFeeds?) {
         titleLabel.text = title
-        switch section {
-        case .entertainment:
-            backgroundColor = UIColor.red.withAlphaComponent(0.1)
-            
-        case .environment:
-            backgroundColor = UIColor.green.withAlphaComponent(0.1)
+        if let section = section {
+            switch section {
+            case .entertainment:
+                backgroundColor = UIColor.red.withAlphaComponent(0.1)
+                
+            case .environment:
+                backgroundColor = UIColor.green.withAlphaComponent(0.1)
+            }
+        }
+        else {
+            backgroundColor = UIColor.white
         }
     }
 }

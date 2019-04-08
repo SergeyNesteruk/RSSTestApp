@@ -87,7 +87,7 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
             switch selectedSegment {
             case .businessNews:
                 if let feedItem = businessNewsDataController.item(index: indexPath.row) {
-                    feedCell.configure(title: feedItem.title, section: EEFeeds(rawValue: indexPath.section)!)
+                    feedCell.configure(title: feedItem.title, section: nil)
                 }
                 
             case .ee:
