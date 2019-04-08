@@ -137,10 +137,12 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: RSSFeedDataControllerDelegate methods
     func feedDidUpdate(controller: RSSFeedDataController, feed: RSSFeed) {
-        // In current implementation direct updates from RSSFeedDataController are only happening for
-        // businessNewsDataController
-        if controller === businessNewsDataController {
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            guard self.selectedSegment == .businessNews else { return }
+            
+            // In current implementation direct updates from RSSFeedDataController are only happening for
+            // businessNewsDataController
+            if controller === self.businessNewsDataController {
                 self.itemsTableView.reloadData()
             }
         }
@@ -148,21 +150,22 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: CombinedDataControllerDelegate methods
     func controllerDidUpdateFeed(controller: RSSFeedDataController) {
-        if controller === entertainmentDataController {
-            let sectionsToReload = IndexSet(arrayLiteral: EEFeeds.entertainment.rawValue)
-            DispatchQueue.main.async {
-                self.itemsTableView.reloadSections(sectionsToReload, with: .automatic)
+        DispatchQueue.main.async {
+            guard self.selectedSegment == .ee else { return }
+            var sectionsToReload: IndexSet = []
+            if controller === self.entertainmentDataController {
+                sectionsToReload = IndexSet(arrayLiteral: EEFeeds.entertainment.rawValue)
             }
-        }
-        else if controller === environmentDataController {
-            let sectionsToReload = IndexSet(arrayLiteral: EEFeeds.environment.rawValue)
-            DispatchQueue.main.async {
-                self.itemsTableView.reloadSections(sectionsToReload, with: .automatic)
+            else if controller === self.environmentDataController {
+                sectionsToReload = IndexSet(arrayLiteral: EEFeeds.environment.rawValue)
             }
+            self.itemsTableView.reloadSections(sectionsToReload, with: .automatic)
         }
     }
     func allDataDidUpdate() {
+        // In current design CombinedDataController should only report if the ee segment is selected
         DispatchQueue.main.async {
+            guard self.selectedSegment == .ee else { return }
             self.itemsTableView.reloadData()
         }
     }
