@@ -140,7 +140,9 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
         // In current implementation direct updates from RSSFeedDataController are only happening for
         // businessNewsDataController
         if controller === businessNewsDataController {
-            itemsTableView.reloadData()
+            DispatchQueue.main.async {
+                self.itemsTableView.reloadData()
+            }
         }
     }
     
