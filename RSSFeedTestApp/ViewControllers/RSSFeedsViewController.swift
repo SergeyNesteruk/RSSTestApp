@@ -173,9 +173,9 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: IBActions
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         suspendDataFetch()
-      
-        // Scroll to top on segment change
         itemsTableView.reloadData()
+        
+        // Scroll to top on segment change
         itemsTableView.scrollToTop(animated: false)
         reconfigureDataFetching()
     }
