@@ -175,8 +175,8 @@ class RSSFeedsViewController: UIViewController, UITableViewDataSource, UITableVi
         suspendDataFetch()
       
         // Scroll to top on segment change
-        self.itemsTableView.scrollToTop(animated: false)
         itemsTableView.reloadData()
+        itemsTableView.scrollToTop(animated: false)
         reconfigureDataFetching()
     }
     
